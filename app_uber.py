@@ -4,9 +4,9 @@ import os
 from datetime import datetime
 
 # Configuração da Página
-st.set_page_config(page_title="Uber Meta 1.6k", page_icon="🚗")
+st.set_page_config(page_title="DriverFlow", page_icon="🚗")
 
-st.title("🚗 Dashboard do Pedro: Meta R$ 1.600")
+st.title("🚗 Dashboard")
 st.markdown("---")
 
 # --- BANCO DE DADOS (CSV) ---
@@ -28,7 +28,7 @@ st.progress(progresso)
 st.write(f"🎯 Faltam **R$ {max(meta_objetivo - total_acumulado, 0.0):.2f}** para fechar o mês!")
 
 # --- FORMULÁRIO DE ENTRADA ---
-with st.expander("➕ Lançar Novo Turno (Sexta/Sábado)"):
+with st.expander("➕ Lançar Novo Turno"):
     with st.form("novo_lancamento"):
         col1, col2 = st.columns(2)
         with col1:
@@ -62,4 +62,5 @@ if btn_salvar:
 if not df.empty:
     st.markdown("---")
     st.subheader("Histórico de Corridas")
+
     st.dataframe(df.sort_index(ascending=False), use_container_width=True)
